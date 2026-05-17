@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: textbook-splitter-app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    volumes:
+      - uploads_data:/app/uploads
+      - outputs_data:/app/outputs
+    restart: unless-stopped
+
+volumes:
+  uploads_data:
+  outputs_data:
